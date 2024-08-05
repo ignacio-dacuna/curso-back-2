@@ -13,7 +13,6 @@ last_name: {
     },
 password: {
     type: String,
-    required: true
     },
 email: {
     type: String,
@@ -22,7 +21,6 @@ email: {
     },
 age: {
     type: Number,
-    required: true
     }
 });
 
