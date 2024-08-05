@@ -53,7 +53,7 @@ passport.authenticate("google", {
             console.log(error);
             res.status(500).json({ status: "error", msg: "Internal server error" });
         }
-    }
+    } 
 );
 
 router.get("/current", async (req, res) => {

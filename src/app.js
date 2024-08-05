@@ -4,12 +4,12 @@ import __dirname from "./dirname.js";
 import handlebars from "express-handlebars";
 import { Server } from "socket.io";
 import viewsRoutes from "./routes/views.routes.js";
-import productManager from "./dao/fyleSystem/productManager.js";
 import { connectMongoDB } from "./config/mongoDB.config.js";
 import session from "express-session";
 import envs from "./config/envs.config.js"
 import passport from "passport";
 import { initializePassport } from "./config/passport.config.js";
+import cookieParser from "cookie-parser";
 
 
 const app = express();
@@ -22,6 +22,7 @@ app.engine("handlebars", handlebars.engine());
 app.set("views", __dirname + "/views");
 app.set("view engine", "handlebars"); 
 app.use(express.static("public"));
+app.use(cookieParser())
 app.use(
     session({
         secret: envs.SECRET_CODE, 
