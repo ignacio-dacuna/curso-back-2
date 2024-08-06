@@ -7,15 +7,15 @@ const getAll = async () => {
 };
 
 const getById = async (id) => {
-    const cart = await cartModel.findById(id)
+    const cart = await cartModel.findById(id).populate("products.product");
     return cart;
 };
 
-const create = async (data) => {
-    const cart = await cartModel.create(data);
+const create = async () => {
+    const cart = await cartModel.create({});
+
     return cart;
 };
-
 
 const update = async (id, data) => {
     const cartUpdate = await cartModel.findByIdAndUpdate(id, data, { new: true });
@@ -23,20 +23,21 @@ const update = async (id, data) => {
 };
 
 const deleteOne = async (id) => {
-    const cart = await cartModel.deleteOne({_id: id});
+    const cart = await cartModel.deleteOne({ _id: id });
     return cart;
 };
 
 const addProductToCart = async (cid, pid) => {
     const cart = await cartModel.findById(cid);
-    
+
     const productInCart = cart.products.find((element) => element.product == pid);
     if (productInCart) {
         productInCart.quantity++;
     } else {
         cart.products.push({ product: pid, quantity: 1 });
     }
-    await cart.save(); 
+
+    await cart.save(); // Guardamos los cambios realizado en la base de datos de mongo
     return cart;
 };
 
@@ -51,7 +52,6 @@ const deleteProductToCart = async (cid, pid) => {
 };
 
 const updateQuantityProductInCart = async (cid, pid, quantity) => {
-
     const cart = await cartModel.findById(cid);
     const product = cart.products.find( element => element.product == pid);
     product.quantity = quantity;
