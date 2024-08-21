@@ -8,7 +8,7 @@ const router = Router();
 
 router.get("/", passportCall("jwt"), authorization("user"), async (req, res) => {
 try {
-    const { limit, page, sort, category, status } = req.query;
+    const { limit, page, sort, category, status } = req.query; 
 
     const options = {
         limit: limit || 10,

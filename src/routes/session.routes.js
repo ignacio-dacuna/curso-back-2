@@ -38,7 +38,7 @@ router.get(
     }),
     async (req, res) => {
         try {
-            return res.status(200).json({ status: "ok", payload: req.user });
+            return res.status(200).json({ status: "ok", payload: req.user }); 
         } catch (error) {
             console.log(error);
         res.status(500).json({ status: "error", msg: "Internal server error" });
