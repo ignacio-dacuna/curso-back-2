@@ -5,31 +5,30 @@ const getAll = async (query, options) => {
     return products;
 };
 
-
 const getById = async (id) => {
     const product = await productModel.findById(id);
-    return product  
-}
+    return product;
+};
 
 const create = async (data) => {
     const product = await productModel.create(data);
-    return product  
-}
+    return product;
+};
 
 const update = async (id, data) => {
-    const product = await productModel.findByIdAndUpdate(id,data, {new: true}) 
-    return product  
-}
+    const productUpdate = await productModel.findByIdAndUpdate(id, data, { new: true });
+    return productUpdate;
+};
 
 const deleteOne = async (id) => {
-    const products = await productModel.findByIdAndUpdate(id, {status: false}, {new: true});
-    return products  
-}
+    const product = await productModel.findByIdAndUpdate(id, { status: false }, { new: true });
+    return product;
+};
 
 export default {
     getAll,
     getById,
     create,
     update,
-    deleteOne,
-}
+    deleteOne
+}   
