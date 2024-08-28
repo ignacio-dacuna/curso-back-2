@@ -46,7 +46,7 @@ router.get(
 passport.authenticate("google", {
     scope: ["https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"],
     session: false,
-}),
+}), 
 async (req, res) => {
     try {
         return res.status(200).json({ status: "ok", payload: req.user });
@@ -57,8 +57,9 @@ async (req, res) => {
 }
 );
 
-router.get("/current", passportCall("jwt"), async (req, res) => {
+router.get("/current", passportCall("current"), async (req, res) => {
     res.status(200).json({ status: "ok", user: req.user });
 });
+
 
 export default router;
