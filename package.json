@@ -22,12 +22,14 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.3",
     "mongoose-paginate-v2": "^1.8.2",
+    "nodemailer": "^6.9.14",
     "passport": "^0.7.0",
     "passport-custom": "^1.1.1",
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
-    "socket.io": "^4.7.5"
+    "socket.io": "^4.7.5",
+    "twilio": "^5.2.3"
   },
   "devDependencies": {
     "nodemon": "^3.1.3"
